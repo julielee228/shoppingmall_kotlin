@@ -18,10 +18,10 @@ class PaymentActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_payment)
 
+        title = "PPI_market"
+
         val database = Firebase.database
         val myRef = database.getReference("productList")
-
-        title = "PPI_market"
 
         if (intent.hasExtra("romand"))
         {
@@ -37,6 +37,7 @@ class PaymentActivity : AppCompatActivity() {
 
         totalPrice.setText(intent.getStringExtra("totalAmount")+"원")
 
+        // 구매하기 버튼을 클릭 했을 때 장바구니 값을 초기화 시키기
         goHome.setOnClickListener {
             myRef.addListenerForSingleValueEvent(object : ValueEventListener {
                 override fun onCancelled(p0: DatabaseError) {

@@ -14,17 +14,18 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-        val database = Firebase.database
-        var myRef = database.getReference("productList")
-
         title = "PPI_market"
 
-        var totalAmount: Int = 0
+        val database = Firebase.database
+        var myRef = database.getReference("productList")
+        var totalAmount = 0
 
+        // 장바구니 버튼을 클릭했을 때
         goBasket.setOnClickListener() {
 
             var intent2 = Intent(this, BasketActivity::class.java)
 
+            // 체크박스에 체크되어있는 상품은 파이어베이스 디비에 저장
             if (romandCheck.isChecked) {
                 myRef.child("romand").setValue(9700)
             }
@@ -34,11 +35,12 @@ class MainActivity : AppCompatActivity() {
             startActivity(intent2)
         }
 
-
+        // 구매하기 버튼을 클릭했을 때
         goBuy.setOnClickListener() {
 
             var intent3 = Intent(this, PaymentActivity::class.java)
 
+            // 체크박스에 체크되어있는 상품을 구매하기 페이지로 넘겨주기
             if (romandCheck.isChecked) {
                 intent3.putExtra("romand", "romand")
                 intent3.putExtra("romandPrice", 9700.toString()+"원")
@@ -49,7 +51,7 @@ class MainActivity : AppCompatActivity() {
                 intent3.putExtra("clioPrice", 32000.toString()+"원")
                 totalAmount += 32000
             }
-            Log.d("얼마냐 ", totalAmount.toString())
+//            Log.d("총가격 : ", totalAmount.toString())
             intent3.putExtra("totalAmount", totalAmount.toString())
             startActivity(intent3)
         }

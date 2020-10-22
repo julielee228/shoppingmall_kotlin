@@ -10,6 +10,7 @@ import android.widget.ImageView
 import android.widget.TextView
 
 
+// 데이터와 리스트뷰 연결을 위한 어댑터 사용하기
 class ProductAdapter(val context: BasketActivity, val ProductList: ArrayList<Product>) : BaseAdapter()
 {
     override fun getView(position: Int, convertView: View?, parent: ViewGroup?): View {
@@ -25,17 +26,6 @@ class ProductAdapter(val context: BasketActivity, val ProductList: ArrayList<Pro
         name.isChecked = false
         price.text = product.price.toString()
         image.setImageResource(product.image)
-
-        var totalAmount = 0
-
-        name.setOnClickListener() {
-            if(name.isChecked) {
-                totalAmount += product.price
-            }
-            else {
-                totalAmount -= product.price
-            }
-        }
 
         return view
     }

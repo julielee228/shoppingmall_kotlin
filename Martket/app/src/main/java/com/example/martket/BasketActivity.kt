@@ -27,8 +27,9 @@ class BasketActivity : AppCompatActivity() {
         var ProductList = arrayListOf<Product>()
         val Adapter = ProductAdapter(this, ProductList)
 
-        var totalAmount: Int = 0
+        var totalAmount = 0
 
+        // 디비에 저장된 상품들을 리스트뷰에 나타냄
         myRef.addListenerForSingleValueEvent(object : ValueEventListener {
             override fun onCancelled(p0: DatabaseError) {
             }
@@ -37,15 +38,16 @@ class BasketActivity : AppCompatActivity() {
                 productList.adapter = Adapter
 
                 for (snapshot in p0.children) {
-//                    Log.d("key", snapshot.key.toString())
-//                    Log.d("값", snapshot.value.toString())
-//                    Log.d("type 확인하기 ", R.drawable.romand::class.simpleName!!)
+                    //Log.d("key", snapshot.key.toString())
+                    //Log.d("값", snapshot.value.toString())
+                    //Log.d("type 확인하기 ", R.drawable.romand::class.simpleName!!)
 
                     ProductList.add(Product(snapshot.key.toString(), Integer.parseInt(snapshot.value.toString()), resources.getIdentifier(snapshot.key.toString(), "drawable", packageName)))
                 }
             }
         })
 
+        // 홈 버튼을 클릭 했을 때 장바구니 값을 초기화 시키기
         goHome.setOnClickListener() {
             myRef.addListenerForSingleValueEvent(object : ValueEventListener {
                 override fun onCancelled(p0: DatabaseError) {
@@ -62,11 +64,13 @@ class BasketActivity : AppCompatActivity() {
             startActivity(intent1)
         }
 
+        // 구매하기 버튼을 클릭 했을 때
         goBuy2.setOnClickListener() {
 
             var intent3 = Intent(this, PaymentActivity::class.java)
             var cnt: Int = productList.count
 
+            // 체크박스에 체크되어있는 상품을 구매하기 페이지로 넘겨주기
             for (i in 0..(cnt-1)) {
                 val item = productList[i]
                 val check = item.productCheck
