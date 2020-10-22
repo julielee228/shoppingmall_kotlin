@@ -39,9 +39,9 @@ class BasketActivity : AppCompatActivity() {
                 for (snapshot in p0.children) {
 //                    Log.d("key", snapshot.key.toString())
 //                    Log.d("값", snapshot.value.toString())
-//                    Log.d("아나22 ", R.drawable.romand::class.simpleName!!)
+//                    Log.d("type 확인하기 ", R.drawable.romand::class.simpleName!!)
 
-                    ProductList.add(Product(snapshot.key.toString(), 9700, resources.getIdentifier(snapshot.key.toString(), "drawable", packageName)))
+                    ProductList.add(Product(snapshot.key.toString(), Integer.parseInt(snapshot.value.toString()), resources.getIdentifier(snapshot.key.toString(), "drawable", packageName)))
                 }
             }
         })

@@ -11,7 +11,6 @@ import com.google.firebase.database.ktx.database
 import com.google.firebase.ktx.Firebase
 import kotlinx.android.synthetic.main.activity_basket.*
 import kotlinx.android.synthetic.main.activity_basket.goHome
-import kotlinx.android.synthetic.main.activity_basket.totalPrice
 import kotlinx.android.synthetic.main.activity_payment.*
 
 class PaymentActivity : AppCompatActivity() {
@@ -21,8 +20,6 @@ class PaymentActivity : AppCompatActivity() {
 
         val database = Firebase.database
         val myRef = database.getReference("productList")
-
-        var totalAmount: Int = 0
 
         title = "PPI_market"
 
@@ -38,7 +35,6 @@ class PaymentActivity : AppCompatActivity() {
             secondItemPrice.setText(intent.getStringExtra("clioPrice"))
         }
 
-        Log.d("얼마냐 222", intent.getStringExtra("totalAmount").toString())
         totalPrice.setText(intent.getStringExtra("totalAmount")+"원")
 
         goHome.setOnClickListener {
