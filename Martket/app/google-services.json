@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "393190325413",
+    "firebase_url": "https://market-db9e8.firebaseio.com",
+    "project_id": "market-db9e8",
+    "storage_bucket": "market-db9e8.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:393190325413:android:2a4c85ad727f4f272d614c",
+        "android_client_info": {
+          "package_name": "com.example.martket"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "393190325413-plb9vidhiqhgdb4il16pe1mhqrrrm903.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCtMmF98vcgxLMYQgTwK8o3BVX0ZFG-XmM"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "393190325413-plb9vidhiqhgdb4il16pe1mhqrrrm903.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
